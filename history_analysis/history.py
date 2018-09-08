@@ -306,9 +306,9 @@ def print_matrices(matrices):
     print("Aa,Ad,Ba,Bd,l,s1,s2,p")
     for (Aa, Ad, Ba, Bd), p, l in matrices:
         for s1, row in enumerate(p):
-            for s2, p in enumerate(row):
+            for s2, probability in enumerate(row):
                 print("{},{},{},{},{},".format(Aa, Ad, Ba, Bd, l), end='')
-                print("{},{},{}".format(s1, s2, p))
+                print("{},{},{}".format(s1, s2, probability))
 
 # Construit les vecteurs manquants
 def build_matrices_rebuilt(stats, threshold_1, threshold_2):
@@ -387,8 +387,8 @@ def compute_rebuilt_matrices(from_year, to_year, proba_table_file, threshold_1, 
                 p = r['p']
                 l = r['l']
                 for s1, row in enumerate(p):
-                    for s2, p in enumerate(row):
-                        w_r = {'Aa': Aa, 'Ad':Ad, 'Ba':Ba, 'Bd':Bd, 'l':l, 's1':s1, 's2':s2, 'p':p}
+                    for s2, probability in enumerate(row):
+                        w_r = {'Aa': Aa, 'Ad':Ad, 'Ba':Ba, 'Bd':Bd, 'l':l, 's1':s1, 's2':s2, 'p':probability}
                         writer.writerow(w_r)
     return rebuilt_matrices
 
